@@ -72,7 +72,7 @@ Deve ser possível inserir, editar, deletar, visualizar e listar as usuários.
 * Crie um README com orientações para a instalação e execução de comandos.
 * Usar migrations
 * Disponibilizar dados iniciais
-* Usar um ambiente com Docker e disponibiliar um Dockerfile ou docker-compose.yml
+* Usar um ambiente com Docker e disponibilizar um Dockerfile ou docker-compose.yml
 
 ## Não é obrigatório, mas seria interessante se você:
 * Programar em inglês
