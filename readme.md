@@ -79,6 +79,9 @@ Deve ser possível inserir, editar, deletar, visualizar e listar as usuários.
 * Criar testes unitários
 * Utilizar as melhores práticas da Orientação a Objetos
 
+Antes De começarmos o debug queria fazer umas considerações.
+	Neste Crud foquei em usar o padrão SOLID e explorar a orientação a objetos, você que irá debugar por favor leia o e-mail que mandarei com o link
+	que la irei explicar tudo mais formalmente para o readme não ficar gigante :)!.
 
 Como utilizar : 
 Para iniciar : Insira sudo docker-compose -d --build
