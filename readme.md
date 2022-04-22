@@ -80,330 +80,542 @@ Deve ser possível inserir, editar, deletar, visualizar e listar as usuários.
 * Utilizar as melhores práticas da Orientação a Objetos
 
 Antes De começarmos o debug queria fazer umas considerações.
-	Neste Crud foquei em usar o padrão SOLID e explorar a orientação a objetos, você que irá debugar por favor leia o e-mail que mandarei com o link
-	que la irei explicar tudo mais formalmente para o readme não ficar gigante :)!.
+Neste Crud foquei em usar o padrão SOLID e explorar a orientação a objetos, você que irá debugar por favor leia o e-mail que mandarei com o link
+que la irei explicar tudo mais formalmente para o readme não ficar gigante :)!.
 
-Como utilizar : 
-Para iniciar : Insira sudo docker-compose -d --build
-               sudo docker exec -it api bash
-               composer install
-               chmod -R 777 bin/console
-               bin/console doctrine:migrations:migrate
-               composer require symfony/apache-pack
-Cursos:
-	Route:http://seuIp:8000/api/course/create
-        {
-	"title" : "Curso de Js Ruby",
-	"description": "Esse é o curso",
-	"initial_date": "30/01/2022",
-	"final_date": "20/05/2022"
-         }
-         {
-	"title" : "Curso de Java",
-	"description": "Esse é o curso",
-	"initial_date": "20/04/2022",
-	"final_date": "30/05/2022"
-         }
-         {
-	"title" : "Curso de C",
-	"description": "Esse é o curso",
-	"initial_date": "30/11/2022",
-	"final_date": "20/12/2022"
-         }
-         {
-	"title" : "Curso de Js Ruby",
-	"description": "Esse é o curso",
-	"initial_date": "30/11/2022",
-	"final_date": "20/01/2023"
-         }
-      Route:http://seuIp:8000/api/course/list
-	Listará todos os cursos
-      Route:http://seuIp:8000/api/course/visualization/{id}
-       Trará um unico registro pelo id
-      Route:http://seuIp:8000/api/course/update/{id}
-       Editará aquele dado em específico
-     Route:http://seuIp:8000/api/course/delete/{id}
+## Como utilizar
 
-Estudantes:
-        Route:http://seuIp:8000/api/student/create
-	{
-	"name" : "Carlos",
-	"email": "carlos@gmail.com",
-        "status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Jose",
-	"email": "jose@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Everton",
-	"email": "everton@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Sandro",
-	"email": "sandro@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-        {
-	"name" : "Fausto",
-	"email": "fausto@gmail.com",
-	"status": "Ativo"
-	"birthday": "1999",
-         }
-         {
-	"name" : "Alex",
-	"email": "alex@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Junio",
-	"email": "junior@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Aldair",
-	"email": "aldair@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/1999",        
-         }
-         {
-	"name" : "Lauro",
-	"email": "lauro@gmail.com",
-	 "status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-         {
-	"name" : "Fernando",
-	"email": "fernando@gmail.com",
-	 "status": "Ativo"
-	"birthday": "30/01/1999",
-         }  
-      Route:http://seuIp:8000/api/student/list
-	Listará todos os cursos
-      Route:http://seuIp:8000/api/student/visualization/{id}
-       Trará um unico registro pelo id
-      Route:http://seuIp:8000/api/student/update/{id}
-       Editará aquele dado em específico
-     Route:http://seuIp:8000/api/student/delete/{id}    
+### Para iniciar
+
+```bash
+sudo docker-compose -d --build
+sudo docker exec -it api bash
+composer install
+chmod -R 777 bin/console
+bin/console doctrine:migrations:migrate
+composer require symfony/apache-pack
+```
+
+### Cursos
+
+Route POST: http://localhost:8000/api/course/create - Essa rota cria um novo curso
+
+```json
+{
+"title" : "Curso de Js Ruby",
+"description": "Esse é o curso",
+"initial_date": "30/01/2022",
+"final_date": "20/05/2022"
+}
+```
+
+```json
+{
+"title" : "Curso de Java",
+"description": "Esse é o curso",
+"initial_date": "20/04/2022",
+"final_date": "30/05/2022"
+}
+```
+
+```json
+
+{
+"title" : "Curso de C",
+"description": "Esse é o curso",
+"initial_date": "30/11/2022",
+"final_date": "20/12/2022"
+}
+```
+
+```json
+{
+"title" : "Curso de Js Ruby",
+"description": "Esse é o curso",
+"initial_date": "30/11/2022",
+"final_date": "20/01/2023"
+ }
+```
+
+Route GET: http://localhost:8000/api/course/list - Listará todos os cursos
+	
+Route GET: http://localhost:8000/api/course/visualization/{id} - Trará um unico registro pelo id do curso
+       
+Route PUT:http://localhost:8000/api/course/update/{id} - Editará aquele dado em específico pelo id do curso
+       
+Route DELETE:http://localhost:8000/api/course/delete/{id} - Deletara um curso em específico pelo id do curso
+
+
+### Estudantes
+      
+ Route POST :http://seuIp:8000/api/student/create - Esta Rota criara um novo Aluno
+ 
+ 
+```json
+{
+"name" : "Carlos",
+"email": "carlos@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Jose",
+"email": "jose@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Everton",
+"email": "everton@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Sandro",
+"email": "sandro@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Fausto",
+"email": "fausto@gmail.com",
+"status": "Ativo"
+"birthday": "1999",
+}
+```
+
+
+```json
+	 
+{
+"name" : "Alex",
+"email": "alex@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Junio",
+"email": "junior@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+```json
+{
+"name" : "Aldair",
+"email": "aldair@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",        
+}
+```
+
+```json
+{
+"name" : "Lauro",
+"email": "lauro@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+
+```json
+{
+"name" : "Fernando",
+"email": "fernando@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}  
+```
+
+Route GET:http://localhost:8000/api/student/list - Listará todos os cursos
+	
+Route GET:http://localhost:8000/api/student/visualization/{id} -  Trará um unico registro pelo id do estudante
+      
+Route PUT:http://localhost:8000/api/student/update/{id} -  Editará aquele dado em específico pelo id do estudante
+      
+Route DELETE:http://localhost:8000/api/student/delete/{id}  - Esta rota deletar um dado específico pelo id  estudante
 	
 
-     Teste de estudante menor de 16 ano
-       {
-	"name" : "Joao",
-	"email": "joao@gmail.com",
-	"status": "Ativo"
-	"birthday": "30/01/2022",
-        }
+### Teste  estudante menor de 16 ano
 
-     Faça o update em um dos status para inativo para o teste em cadastro de matrícula
-     Pegue o id de Aldair cadastrado anteriormente por exemplo e passe o json { "status" : "Inativo"}
+```json
+{
+"name" : "Joao",
+"email": "joao@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/2022",
+}
+```
 
-Contas Dos Estudantes:
-	 Route:http://seuIp:8000/api/student/create
-	{
-	"name" : "Carlos",
-	"email": "carlos@gmail.com",
-        "status": "Ativo"
-         }
-         {
-	"name" : "Jose",
-	"email": "jose@gmail.com",
-	"status": "Ativo"
-         }
-         {
-	"name" : "Everton",
-	"email": "everton@gmail.com",
-	"status": "Ativo"
-         }
-         {
-	"name" : "Sandro",
-	"email": "sandro@gmail.com",
-	"status": "Ativo"
-         }
-        {
-	"name" : "Fausto",
-	"email": "fausto@gmail.com",
-	"status": "Ativo"
-         }
-         {
-	"name" : "Alex",
-	"email": "alex@gmail.com",
-	"status": "Ativo"
-         }
-         {
-	"name" : "Junio",
-	"email": "junior@gmail.com",
-	"status": "Ativo"
-         }
-         {
-	"name" : "Aldair",
-	"email": "aldair@gmail.com",
-	"status": "Ativo"      
-         }
-         {
-	"name" : "Lauro",
-	"email": "lauro@gmail.com",
-	 "status": "Ativo"
-         }
-         {
-	"name" : "Fernando",
-	"email": "fernando@gmail.com",
-	 "status": "Ativo"
-	  }  
-      Route:http://seuIp:8000/api/student/account/list
-	Listará todos os cursos
-      Route:http://seuIp:8000/api/student/account/visualization/{id}
-       Trará um unico registro pelo id
-      Route:http://seuIp:8000/api/student/account/update/{id}
-       Editará aquele dado em específico
-     Route:http://seuIp:8000/api/student/account/delete/{id}    
-Matriculas:
-	Contas Dos Estudantes:
-	 Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "1",
-	"student_account_id": "1",
-        "course_id": "4"
-         }
+### Retorno
+ * Vai retornar que o estudante não pode se cadastrar , pois, tem menos de 16 anos
+
+## Observações Importantes :
+- Faça o update em um dos status para inativo para o teste em cadastro de matrícula
+    
+- Pegue o id de Aldair cadastrado anteriormente por exemplo e passe o json { "status" : "Inativo"}
+
+### Contas Dos Estudantes 
+
+ Route POST:http://localhost:8000/api/student/create - Essa rota cria uma nova conta para o estudante
+
+```json
+{
+"name" : "Carlos",
+"email": "carlos@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Jose",
+"email": "jose@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Everton",
+"email": "everton@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Sandro",
+"email": "sandro@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Fausto",
+"email": "fausto@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Alex",
+"email": "alex@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Junio",
+"email": "junior@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Aldair",
+"email": "aldair@gmail.com",
+"status": "Ativo"      
+}
+```
+
+```json
+{
+"name" : "Lauro",
+"email": "lauro@gmail.com",
+"status": "Ativo"
+}
+```
+
+```json
+{
+"name" : "Fernando",
+"email": "fernando@gmail.com",
+"status": "Ativo"
+}  
+```
+Route GET:http://localhost:8000/api/student/account/list - Listará todos os cursos
+	
+Route GET:http://localhost:8000/api/student/account/visualization/{id} -  Trará um unico registro específico relacionado a conta do estudante pelo seu id
+      
+Route PUT:http://localhost:8000/api/student/account/update/{id} -  Editará aquele dado em específico relacionado a conta do estudante pelo seu id
+      
+Route DELETE:http://localhost:8000/api/student/account/delete/{id}  - Deletará um registro específico relacionado a conta do estudante pelo seu id
+
+### Matriculas
+
+Route POST:http://localhost:8000/api/register/create - Essa rota cria uma nova matrícula para o estudante com seus registro enquanto aluno e com sua conta 
+```json
+{
+"student_id" : "1",
+"student_account_id": "1",
+"course_id": "4"
+}
+```
+
+```json
          
-	{
-	"student_id" : "2",
-	"student_account_id": "2",
-        "course_id": "4"
-         }
+{
+"student_id" : "2",
+"student_account_id": "2",
+"course_id": "4"
+}
+```
+
+```json
          
-	{
-	"student_id" : "3",
-	"student_account_id": "3",
-        "course_id": "4"
-         }
+{
+"student_id" : "3",
+"student_account_id": "3",
+"course_id": "4"
+}
+```
+
+```json
          
-	{
-	"student_id" : "4",
-	"student_account_id": "4",
-        "course_id": "4"
-         }
+{
+"student_id" : "4",
+"student_account_id": "4",
+"course_id": "4"
+}
+```
+
+```json
         
-	{
-	"student_id" : "5",
-	"student_account_id": "5",
-        "course_id": "1"
-         }
+{
+"student_id" : "5",
+"student_account_id": "5",
+"course_id": "1"
+}
+```
+
+```json
          
-	{
-	"student_id" : "6",
-	"student_account_id": "6",
-        "course_id": "4"
-         }
+{
+"student_id" : "6",
+"student_account_id": "6",
+"course_id": "4"
+}
+```
+
+```json
          
-	{
-	"student_id" : "7",
-	"student_account_id": "7",
-        "course_id": "4"
-         }
+{
+"student_id" : "7",
+"student_account_id": "7",
+"course_id": "4"
+}
+```
+
+```json
          
-	{
-	"student_id" : "8",
-	"student_account_id": "8",
-        "course_id": "4"
-         }
-         
-	{
-	"student_id" : "9",
-	"student_account_id": "9",
-        "course_id": "4"
-         }
-         
-	{
-	"student_id" : "10",
-	"student_account_id": "10",
-        "course_id": "4"
-         }  
-      Route:http://seuIp:8000/api/register/list
-	Listará todos os cursos
-      Route:http://seuIp:8000/api/register/visualization/{id}
-       Trará um unico registro pelo id
-      Route:http://seuIp:8000/api/register/update/{id}
-       Editará aquele dado em específico
-     Route:http://seuIp:8000/api/register/delete/{id}   
+{
+"student_id" : "8",
+"student_account_id": "8",
+"course_id": "4"
+}
+```
 
-Testes De registro de matrícula : 
-  Criar uma conta para o estudante
- Route:http://seuIp:8000/api/student/create
-	{
-	"name" : "Marcelo",
-	"email": "marcelo@gmail.com",
-        "status": "Ativo"
-         }
-Criar uma novo aluno que terá aquela conta
-Route:http://seuIp:8000/api/student/create
-	{
-	"name" : "Marcelo",
-	"email": "marcelo@gmail.com",
-        "status": "Ativo"
-	"birthday": "30/01/1999",
-         }
-  	
- Vai retornar que o curso ja atinigiu o limite máximo
-      Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "idMarcelo",
-	"student_account_id": "idMarcelo",
-        "course_id": "4"
-         }
+```json        
+{
+"student_id" : "9",
+"student_account_id": "9",
+"course_id": "4"
+}
+```
 
-
-Vai retornar que o curso ja está em andamentou ou encerrou, não é possível mais o cadastro
-      Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "idMarcelo",
-	"student_account_id": "idMarcelo",
-        "course_id": "1"
-         }
-
-Vai retornar que o Aluno ja esta cadastrado neste curso atual
-      Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "idAldair",
-	"student_account_id": "idAldair",
-        "course_id": "4"
-         }
-
-Vai Retornar que o Aluno está inativo e não pode mais particiar do curso
-	Route:http://seuIp:8000/api/student/update/{idAldair}
-	{status: "Inativo"}
-
-	Route:http://seuIp:8000/api/student/account/update/{idAldair}
-	{status: "Inativo"}
+```json       
+{
+"student_id" : "10",
+"student_account_id": "10",
+"course_id": "4"
+}  
+```
+     
+Route:http://localhost:8000/api/register/list -Listará todos os cursos
 	
-	Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "idAldair",
-	"student_account_id": "idAldair",
-        "course_id": "5"
-         }
+Route:http://localhost:8000/api/register/visualization/{id} - Trará um unico registro pelo id da matrícula
+       
+Route:http://localhost:8000/api/register/update/{id} -  Editará aquele dado em específico pelo id da matrícula
+     
+Route:http://localhost:8000/api/register/delete/{id} - Deletará aquele dado em específico pelo id da matrícula
 
-Vai Retornar que o Aluno Foi cadastrado em outro Curso
-	Route:http://seuIp:8000/api/student/update/{idAldair}
-	{status: "Ativo"}
+### Testes De registro de matrícula  
 
-	Route:http://seuIp:8000/api/student/account/update/{idAldair}
-	{status: "Ativo"}
+### Passo 1 : Criar uma conta para o estudante 
+
+Route POST:http://localhost:8000/api/student/create
+
+```json
+{
+"name" : "Marcelo",
+"email": "marcelo@gmail.com",
+"status": "Ativo"
+}
+```
+
+### Passo 2 : Criar uma novo aluno que terá aquela conta
+
+Route POST:http://localhost:8000/api/student/create
+
+```json
+{
+"name" : "Marcelo",
+"email": "marcelo@gmail.com",
+"status": "Ativo"
+"birthday": "30/01/1999",
+}
+```
+
+### Passo 3 : Matricular este aluno no curso 4 que anteriormente teve 10 matrículas nele
+
+Route POST :http://localhost:8000/api/register/create
+
+```json
+{
+"student_id" : "idMarcelo",
+"student_account_id": "idMarcelo",
+"course_id": "4"
+}
+```
+### Retorno Teste de Registro de Matrícula
+
+ * Vai retornar que o curso ja atinigiu o limite máximo
+
 	
-	Route:http://seuIp:8000/api/register/create
-	{
-	"student_id" : "idAldair",
-	"student_account_id": "idAldair",
-        "course_id": "5"
-         }
+
+### Teste Para curso em andamento ou finalizado
+
+
+Route POST:http://localhost:8000/api/register/create
+
+```json
+{
+"student_id" : "idMarcelo",
+"student_account_id": "idMarcelo",
+"course_id": "1"
+}
+```
+
+### Retorno do Teste Para curso em andamento ou finalizado
+ * Vai retornar que o curso ja está em andamentou ou encerrou, não é possível mais o cadastro
+
+
+### Teste Para Aluno Cadastrado no curso que ele ja foi cadastrado anteriormente
+
+Route POST:http://localhost:8000/api/register/create
+```json
+{
+"student_id" : "idAldair",
+"student_account_id": "idAldair",
+"course_id": "4"
+}
+```
+### Retorno
+
+* Vai retornar que o Aluno ja esta cadastrado neste curso atual
+
+
+### Teste Para Aluno Inativo
+
+### PASSO 1 : Faça um Update em Student passando seu Id para "Inativo"
+
+Route PUT:http://localhost:8000/api/student/update/{idAldair}
+
+```json
+{
+"status": "Inativo"
+}
+```
+### PASSO 2 : Faça um Update em StudentAccount passando seu Id para "Inativo"
+
+Route PUT:http://localhost:8000/api/student/account/update/{idAldair}
+
+```json
+{
+"status": "Inativo"
+}
+```
+### PASSO 3 : Registre o Aluno	
+
+Route POST:http://localhost:8000/api/register/create
+
+```json
+{
+"student_id" : "idAldair",
+"student_account_id": "idAldair",
+"course_id": "5"
+}
+```
+	 
+### Retorno do Teste Para Aluno Inativo
+
+* Vai Retornar que o Aluno está inativo e não pode mais particiar do curso
+	
+	
+### Teste Para Aluno Cadastrado em curso  se cadastrando em outro curso que ainda não começou e tem menos de 10 pessoas
+
+### PASSO 1 : Acesse Update Student e mude o status para "Ativo" ja que editou este usuário no teste anterior
+
+Route PUT:http://localhost:8000/api/student/update/{idAldair}
+
+```json
+{
+"status": "Ativo"
+}
+```
+
+### PASSO 2 :  Acesse Update StudentAccount e mude o status para "Ativo" ja que editou este usuário no teste anterior
+
+Route PUT:http://localhost:8000/api/student/account/update/{idAldair}
+
+```json
+{
+"status": "Ativo"
+}
+```
+
+### PASSO 3 : Registre o Usúario
+
+Route POST:http://localhosy:8000/api/register/create
+
+```json
+{
+"student_id" : "idAldair",
+"student_account_id": "idAldair",
+"course_id": "5"
+}
+```
+	 
+### Retorno
+
+- Vai Retornar que o Aluno Foi cadastrado em outro Curso
 
 
 
